@@ -1,7 +1,9 @@
-﻿#include <iostream>
+﻿#include <string>
+
+#include "Person.h"
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!\n";
+	Person person1("A123456789", "Chen", "Jason", "M", "1999-01-01");
 }
