@@ -27,6 +27,9 @@
     <ClCompile Include="Teacher.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="Utility.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Person.h">
