@@ -10,7 +10,7 @@
 - 初始參數列表(initializer list)的使用
 - 了解類別內成員的存取權限: public, private, protected
 - 了解類別的建構子與解構子
-- 了解資訊封裝的意義(encapsulation)
+- 了解[資訊封裝](https://www.w3schools.com/cpp/cpp_encapsulation.asp)的意義(encapsulation)
 - 了解同名異式(polymorphism)的概念)
 
 ## ver 2
@@ -24,4 +24,5 @@
 - 新增README.md說明文件
 - 新增Course類別
 - 新增繼承自Person的Teacher類別
-- 使用vector容器儲存物件來記錄教師所授課的課程
+- 使用[vector](https://www.w3schools.com/cpp/cpp_vectors.asp)容器儲存物件來記錄教師所授課的課程
+- 變數重新命名(rename)，程式碼重構(refactoring)

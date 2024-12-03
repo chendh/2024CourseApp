@@ -135,6 +135,7 @@
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="2024CourseApp.h" />
     <ClInclude Include="Course.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Student.h" />
