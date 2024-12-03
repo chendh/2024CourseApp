@@ -1,7 +1,9 @@
 ﻿#include <string>
 #include <iostream>
-#include "Person.h"
+//#include "Person.h"
 #include "Student.h"
+#include "Teacher.h"
+#include "Course.h"
 #include "Utility.h"
 using namespace std;
 
@@ -22,4 +24,10 @@ int main()
 
 	Student student1("A123456789", "Chen", "Jason", "M", "1999-01-01", "S001", Department::ComputerSciece, ClassName::_1A);
 	student1.display();
+
+	cout << endl;
+	Course course1("C001", "C++ Programming", "This course is designed to teach students how to program in C++.");
+	course1.display();
+
+	Teacher teacher1("T123456789", "Chen", "Jason", "M", "1999-01-01", "T001", Department::ComputerSciece, ClassName::_1A, { course1 });
 }

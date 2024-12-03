@@ -30,6 +30,9 @@
     <ClCompile Include="Utility.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="Course.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Person.h">
@@ -42,6 +45,9 @@
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="Utility.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Course.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>
