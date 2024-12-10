@@ -34,3 +34,5 @@
 - 瞭解auto關鍵字的使用
 - 瞭解C++ foreach迴圈的使用
 - 瞭解vector容器的push_back()和size()方法的意義
+- 使用do-while迴圈
+- 使用switch-case敘述
