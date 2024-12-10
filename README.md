@@ -1,7 +1,7 @@
 # 2024 C++課程管理系統
 ## ver 1
 **程式設計範例**
-- 新增Person類別：
+- 新增Person類別
 - 練習使用Visual Studio
 - 練習使用debug
 - 練習git的功能：commit, push
@@ -11,7 +11,7 @@
 - 了解類別內成員的存取權限: public, private, protected
 - 了解類別的建構子與解構子
 - 了解[資訊封裝](https://www.w3schools.com/cpp/cpp_encapsulation.asp)的意義(encapsulation)
-- 了解同名異式(polymorphism)的概念)
+- 了解同名異式(polymorphism)的概念
 
 ## ver 2
 - 新增衍生自Person的Student類別
@@ -26,3 +26,11 @@
 - 新增繼承自Person的Teacher類別
 - 使用[vector](https://www.w3schools.com/cpp/cpp_vectors.asp)容器儲存物件來記錄教師所授課的課程
 - 變數重新命名(rename)，程式碼重構(refactoring)
+
+## ver 4
+- 新增選課紀錄Record類別
+- 瞭解類別的靜態成員(static member)的概念
+- 使用time_t型別記錄選課時間
+- 瞭解auto關鍵字的使用
+- 瞭解C++ foreach迴圈的使用
+- 瞭解vector容器的push_back()和size()方法的意義

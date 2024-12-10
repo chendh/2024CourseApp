@@ -1,3 +1,5 @@
 #pragma once
 
-void InitializeData();
+void initializeData();
+void displayMenu();
+void listStudents();
