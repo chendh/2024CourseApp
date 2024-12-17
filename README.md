@@ -36,3 +36,8 @@
 - 瞭解vector容器的push_back()和size()方法的意義
 - 使用do-while迴圈
 - 使用switch-case敘述
+
+## ver 5
+- 使用system指令
+- 了解程式編譯與連結的過程，以及其所產生的錯誤訊息
+- 使用C++的foreach迴圈
