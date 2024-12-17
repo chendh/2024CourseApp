@@ -65,17 +65,17 @@ void initializeData()
 	courses.push_back(Course("C005", "Visual Basic Programming", "這門課程教授Visual Basic程式語言"));
 
 	// 新增5筆學生資料
-	students.push_back(Student("S001", "陳", "小明", "男", "1999-01-01", "S001", Department::ComputerSciece, ClassName::_1A));
-	students.push_back(Student("S002", "林", "小華", "男", "1999-02-02", "S002", Department::ElectricalEngineering, ClassName::_1A));
-	students.push_back(Student("S003", "黃", "小美", "女", "1999-03-03", "S003", Department::InformationManagement, ClassName::_1B));
-	students.push_back(Student("S004", "張", "小強", "男", "1999-04-04", "S004", Department::ComputerSciece, ClassName::_2A));
-	students.push_back(Student("S005", "李", "小花", "女", "1999-05-05", "S005", Department::ElectronicEngineering, ClassName::_2B));
+	students.push_back(Student("I001", "陳", "小明", "男", "1999-01-01", "S001", Department::ComputerSciece, ClassName::_1A));
+	students.push_back(Student("I002", "林", "小華", "男", "1999-02-02", "S002", Department::ElectricalEngineering, ClassName::_1A));
+	students.push_back(Student("I003", "黃", "小美", "女", "1999-03-03", "S003", Department::InformationManagement, ClassName::_1B));
+	students.push_back(Student("I004", "張", "小強", "男", "1999-04-04", "S004", Department::ComputerSciece, ClassName::_2A));
+	students.push_back(Student("I005", "李", "小花", "女", "1999-05-05", "S005", Department::ElectronicEngineering, ClassName::_2B));
 
 	// 新增2筆老師資料
 	vector<Course> teacher1_courses = { courses[0], courses[1], courses[2] };
-	teachers.push_back(Teacher("T001", "王", "大富", "男", "1980-7-1", "T001", Department::ComputerSciece, ClassName::_1A, teacher1_courses));
+	teachers.push_back(Teacher("I101", "王", "大富", "男", "1980-7-1", "T001", Department::ComputerSciece, ClassName::_1A, teacher1_courses));
 	vector<Course> teacher2_courses = { courses[3], courses[4] };
-	teachers.push_back(Teacher("T002", "李", "大貴", "男", "1985-5-5", "T002", Department::InformationManagement, ClassName::_1B, teacher2_courses));
+	teachers.push_back(Teacher("I102", "李", "大貴", "男", "1985-5-5", "T002", Department::InformationManagement, ClassName::_1B, teacher2_courses));
 
 	// 新增10筆選課紀錄
 	records.push_back(Record("S001", "C001"));
@@ -100,6 +100,10 @@ void displayMenu() {
 		cout << "3. 列出教師資料" << endl;
 		cout << "4. 列出選課紀錄" << endl;
 		cout << "5  查詢學生資料" << endl;
+		cout << "6. 查詢課程資料" << endl;
+		cout << "7. 查詢教師資料" << endl;
+		cout << "8. 查詢選課紀錄" << endl;
+		cout << "9. 新增學生資料" << endl;
 		cout << "0. 退出" << endl;
 		cout << "請選擇操作: ";
 		cin >> choice;
@@ -129,6 +133,27 @@ void displayMenu() {
 			cout << "查詢學生資料" << endl;
 			queryStudent();
 			break;
+		case 6:
+			cout << "查詢課程資料" << endl;
+			//queryCourse();
+			system("pause");
+			break;
+		case 7:
+			cout << "查詢教師資料" << endl;
+			//queryTeacher();
+			system("pause");
+			break;
+		case 8:
+			cout << "查詢選課紀錄" << endl;
+			//queryRecord();
+			system("pause");
+			break;
+		case 9:
+			cout << "新增學生資料" << endl;
+			addStudent();
+			system("pause");
+			break;
+			// 新增 課程，教師，選課紀錄的功能
 		case 0:
 			cout << "退出" << endl;
 			break;
@@ -201,4 +226,41 @@ void queryStudent()
 		cout << "找不到學號為" << studentId << "的學生" << endl;
 	}
 	system("pause");
+}
+
+void addStudent()
+{
+	string id, lastName, firstName, birthDate, gender, studentId;
+	int departmentChoice, classNameChoice;
+
+	cout << "身分證字號: ";
+	cin >> id;
+	cout << "姓: ";
+	cin >> lastName;
+	cout << "名: ";
+	cin >> firstName;
+	cout << "性別： ";
+	cin >> gender;
+	cout << "生日: ";
+	cin >> birthDate;
+	cout << "學號: ";
+	cin >> studentId;
+
+	cout << "科系: " << endl;
+	for (int i = 0; i < static_cast<int>(Department::Last); i++) {
+		cout << i << ". " << Utility::toString(static_cast<Department>(i)) << endl;
+	}
+	cout << "請選擇科系: ";
+	cin >> departmentChoice;
+	Department department = static_cast<Department>(departmentChoice);
+
+	cout << "班級: " << endl;
+	for (int i = 0; i < static_cast<int>(ClassName::Last); i++) {
+		cout << i << ". " << Utility::toString(static_cast<ClassName>(i)) << endl;
+	}
+	cout << "請選擇班級: ";
+	cin >> classNameChoice;
+	ClassName className = static_cast<ClassName>(classNameChoice);
+
+	students.push_back(Student(id, lastName, firstName, gender, birthDate, studentId, department, className));
 }
