@@ -107,6 +107,13 @@ void displayMenu() {
 		cout << "10. 新增課程資料" << endl;
 		cout << "11. 新增教師資料" << endl;
 		cout << "12. 新增選課紀錄" << endl;
+		cout << "13. 刪除學生資料" << endl;
+		cout << "14. 刪除課程資料" << endl;
+		cout << "15. 刪除教師資料" << endl;
+		cout << "16. 刪除選課紀錄" << endl;
+		cout << "17. 修改學生資料" << endl;
+		cout << "18. 修改課程資料" << endl;
+		cout << "19. 修改教師資料" << endl;
 		cout << "=========================" << endl;
 		cout << "0. 退出" << endl;
 		cout << "請選擇操作: ";
@@ -157,7 +164,6 @@ void displayMenu() {
 			addStudent();
 			system("pause");
 			break;
-			// 新增 課程，教師，選課紀錄的功能
 		case 10:
 			cout << "新增課程資料" << endl;
 			//addCourse();
@@ -171,6 +177,43 @@ void displayMenu() {
 		case 12:
 			cout << "新增選課紀錄" << endl;
 			//addRecord();
+			system("pause");
+			break;
+			// 作業10: 完成以下內容
+			// 刪除學生、課程、教師、選課紀錄的功能
+		case 13:
+			cout << "刪除學生資料" << endl;
+			deleteStudent();
+			system("pause");
+			break;
+		case 14:
+			cout << "刪除課程資料" << endl;
+			//deleteCourse();
+			system("pause");
+			break;
+		case 15:
+			cout << "刪除教師資料" << endl;
+			//deleteTeacher();
+			system("pause");
+			break;
+		case 16:
+			cout << "刪除選課紀錄" << endl;
+			//deleteRecord();
+			system("pause");
+			break;
+		case 17:
+			cout << "修改學生資料" << endl;
+			updateStudent();
+			system("pause");
+			break;
+		case 18:
+			cout << "修改課程資料" << endl;
+			//updateCourse();
+			system("pause");
+			break;
+		case 19:
+			cout << "修改教師資料" << endl;
+			//updateTeacher();
 			system("pause");
 			break;
 		case 0:
@@ -335,4 +378,58 @@ void addStudent()
 	ClassName className = static_cast<ClassName>(classNameChoice);
 
 	students.push_back(Student(id, lastName, firstName, gender, birthDate, studentId, department, className));
+}
+
+void deleteStudent()
+{
+	string studentId;
+	cout << "請輸入學號: ";
+	cin >> studentId;
+	bool found = false;
+	for (auto it = students.begin(); it != students.end(); it++) {
+		if (it->getStudentId() == studentId) {
+			students.erase(it);
+			found = true;
+			break;
+		}
+	}
+	if (!found) {
+		cout << "找不到學號為" << studentId << "的學生" << endl;
+	}
+}
+
+void updateStudent()
+{
+	string studentId;
+	cout << "請輸入學號: ";
+	cin >> studentId;
+	bool found = false;
+
+	for (auto& student : students) {
+		if (student.getStudentId() == studentId) {
+			found = true;
+			int departmentChoice, classNameChoice;
+
+			cout << "科系: " << endl;
+			for (int i = 0; i < static_cast<int>(Department::Last); i++) {
+				cout << i << ". " << Utility::toString(static_cast<Department>(i)) << endl;
+			}
+			cout << "請選擇科系: ";
+			cin >> departmentChoice;
+			Department department = static_cast<Department>(departmentChoice);
+			student.setDepartment(department);
+
+			cout << "班級: " << endl;
+			for (int i = 0; i < static_cast<int>(ClassName::Last); i++) {
+				cout << i << ". " << Utility::toString(static_cast<ClassName>(i)) << endl;
+			}
+			cout << "請選擇班級: ";
+			cin >> classNameChoice;
+			ClassName className = static_cast<ClassName>(classNameChoice);
+			student.setClassName(className);
+		}
+	}
+	if (!found) {
+		cout << "找不到學號為" << studentId << "的學生" << endl;
+	}
 }
