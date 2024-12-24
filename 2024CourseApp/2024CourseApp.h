@@ -7,4 +7,7 @@ void listCourses();
 void listTeachers();
 void listRecords();
 void queryStudent();
+void queryCourse();
+void queryTeacher();
+void queryRecord();
 void addStudent();

@@ -104,6 +104,10 @@ void displayMenu() {
 		cout << "7. 查詢教師資料" << endl;
 		cout << "8. 查詢選課紀錄" << endl;
 		cout << "9. 新增學生資料" << endl;
+		cout << "10. 新增課程資料" << endl;
+		cout << "11. 新增教師資料" << endl;
+		cout << "12. 新增選課紀錄" << endl;
+		cout << "=========================" << endl;
 		cout << "0. 退出" << endl;
 		cout << "請選擇操作: ";
 		cin >> choice;
@@ -135,17 +139,17 @@ void displayMenu() {
 			break;
 		case 6:
 			cout << "查詢課程資料" << endl;
-			//queryCourse();
+			queryCourse();
 			system("pause");
 			break;
 		case 7:
 			cout << "查詢教師資料" << endl;
-			//queryTeacher();
+			queryTeacher();
 			system("pause");
 			break;
 		case 8:
 			cout << "查詢選課紀錄" << endl;
-			//queryRecord();
+			queryRecord();
 			system("pause");
 			break;
 		case 9:
@@ -154,6 +158,21 @@ void displayMenu() {
 			system("pause");
 			break;
 			// 新增 課程，教師，選課紀錄的功能
+		case 10:
+			cout << "新增課程資料" << endl;
+			//addCourse();
+			system("pause");
+			break;
+		case 11:
+			cout << "新增教師資料" << endl;
+			//addTeacher();
+			system("pause");
+			break;
+		case 12:
+			cout << "新增選課紀錄" << endl;
+			//addRecord();
+			system("pause");
+			break;
 		case 0:
 			cout << "退出" << endl;
 			break;
@@ -225,7 +244,60 @@ void queryStudent()
 	if (!found) {
 		cout << "找不到學號為" << studentId << "的學生" << endl;
 	}
-	system("pause");
+}
+
+void queryCourse()
+{
+	string courseId;
+	cout << "請輸入課程編號: ";
+	cin >> courseId;
+	bool found = false;
+	for (auto course : courses) {
+		if (course.getCourseId() == courseId) {
+			course.display();
+			found = true;
+			break;
+		}
+	}
+	if (!found) {
+		cout << "找不到課程編號為" << courseId << "的課程" << endl;
+	}
+}
+
+void queryTeacher()
+{
+	string teacherId;
+	cout << "請輸入教師編號: ";
+	cin >> teacherId;
+	bool found = false;
+	for (auto teacher : teachers) {
+		if (teacher.getTeacherId() == teacherId) {
+			teacher.display();
+			found = true;
+			break;
+		}
+	}
+	if (!found) {
+		cout << "找不到教師編號為" << teacherId << "的教師" << endl;
+	}
+}
+
+void queryRecord()
+{
+	int recordId;
+	cout << "請輸入選課紀錄編號: ";
+	cin >> recordId;
+	bool found = false;
+	for (auto record : records) {
+		if (record.getRecordId() == recordId) {
+			record.display();
+			found = true;
+			break;
+		}
+	}
+	if (!found) {
+		cout << "找不到選課紀錄編號為" << recordId << "的選課紀錄" << endl;
+	}
 }
 
 void addStudent()
