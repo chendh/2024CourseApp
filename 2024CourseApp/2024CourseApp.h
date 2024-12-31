@@ -13,3 +13,4 @@ void queryRecord();
 void addStudent();
 void deleteStudent();
 void updateStudent();
+void saveRecordsToFile(const string&);

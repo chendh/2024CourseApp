@@ -1,5 +1,6 @@
 ﻿#include <string>
 #include <iostream>
+#include <fstream>
 #include <vector>
 //#include "Person.h"
 #include "Student.h"
@@ -114,6 +115,7 @@ void displayMenu() {
 		cout << "17. 修改學生資料" << endl;
 		cout << "18. 修改課程資料" << endl;
 		cout << "19. 修改教師資料" << endl;
+		cout << "20. 保存選課紀錄到文件" << endl;
 		cout << "=========================" << endl;
 		cout << "0. 退出" << endl;
 		cout << "請選擇操作: ";
@@ -214,6 +216,11 @@ void displayMenu() {
 		case 19:
 			cout << "修改教師資料" << endl;
 			//updateTeacher();
+			system("pause");
+			break;
+		case 20:
+			cout << "保存選課紀錄到文件" << endl;
+			saveRecordsToFile("records.txt");
 			system("pause");
 			break;
 		case 0:
@@ -432,4 +439,48 @@ void updateStudent()
 	if (!found) {
 		cout << "找不到學號為" << studentId << "的學生" << endl;
 	}
+}
+
+void saveRecordsToFile(const string& filename) {
+	ofstream outFile(filename);
+	if (!outFile) {
+		cerr << "無法打開文件: " << filename << endl;
+		return;
+	}
+
+	for (const auto& record : records) {
+		// 查找學生
+		auto studentIt = find_if(students.begin(), students.end(), [&record](const Student& student) {
+			return student.getStudentId() == record.getStudentId();
+			});
+
+		// 查找課程
+		auto courseIt = find_if(courses.begin(), courses.end(), [&record](const Course& course) {
+			return course.getCourseId() == record.getCourseId();
+			});
+
+		if (studentIt != students.end() && courseIt != courses.end()) {
+			outFile << "選課紀錄編號: " << record.getRecordId() << endl;
+			outFile << "選課日期: " << record.getRecordDate() << endl;
+			outFile << "學生資料:" << endl;
+			outFile << "----------------" << endl;
+			outFile << "學號: " << studentIt->getStudentId() << endl;
+			outFile << "姓名: " << studentIt->getLastName() << studentIt->getFirstName() << endl;
+			outFile << "性別: " << studentIt->getGender() << endl;
+			outFile << "生日: " << studentIt->getBirthDate() << endl;
+			outFile << "科系: " << Utility::toString(studentIt->getDepartment()) << endl;
+			outFile << "班級: " << Utility::toString(studentIt->getClassName()) << endl;
+			outFile << "----------------" << endl;
+			outFile << "課程資料:" << endl;
+			outFile << "----------------" << endl;
+			outFile << "課程編號: " << courseIt->getCourseId() << endl;
+			outFile << "課程名稱: " << courseIt->getCourseName() << endl;
+			outFile << "課程描述: " << courseIt->getCourseDescription() << endl;
+			outFile << "===================" << endl;
+			outFile << endl;
+		}
+	}
+
+	outFile.close();
+	cout << "選課紀錄已保存到文件: " << filename << endl;
 }
